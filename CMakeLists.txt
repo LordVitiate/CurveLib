@@ -24,7 +24,7 @@ add_executable(MyApp main.cxx)
 target_link_libraries(MyApp PRIVATE MyLibrary)
 
 set_target_properties(MyApp PROPERTIES
-    CXX_STANDARD 11
+    CXX_STANDARD 14
     CXX_STANDARD_REQUIRED YES
     CXX_EXTENSIONS NO
 )

@@ -77,18 +77,28 @@ public:
 	}	
 };
 
+void PrintContainer(const Container& container)
+{
+	std::cout << " ===== " << std::endl;
+	std::cout << " container's size: " << container.size() << std::endl;
+	for(auto& fig :container) 
+	{
+		std::cout << " \t x: " << std::get<0>(fig->C(M_PI/4.0)) << " dx: " << std::get<0>(fig->dC(M_PI/4.0)) << std::endl;
+		std::cout << " \t y: " << std::get<1>(fig->C(M_PI/4.0)) << " dy: " << std::get<1>(fig->dC(M_PI/4.0)) << std::endl;
+		std::cout << " \t z: " << std::get<2>(fig->C(M_PI/4.0)) << " dz: " << std::get<2>(fig->dC(M_PI/4.0)) << std::endl;
+	}
+	std::cout << " ===== " << std::endl;
+
+}
+
 int main(int argc, char const *argv[])
 {
-	Container a;
+	Container container;
 	RandomManner fabric;
-for (int i = 0; i < 10; i++)
-{
-	a = fabric.CreateRandomContainer();
-	std::cout << "size: " << a.size() << std::endl;
-	for(auto& fig : a) 
+	for (int i = 0; i < 10; i++)
 	{
-		std::cout << "\t x: " << std::get<0>(fig->C(2.5)) << std::endl;
+		container = fabric.CreateRandomContainer();
+		PrintContainer(container);
 	}
-}
 	return 0;
 }

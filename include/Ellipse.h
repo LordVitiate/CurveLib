@@ -27,7 +27,15 @@ struct Ellipse : public ParametricCurve {
      * @return     The point.
      */
     Point C(float t) const override;
-    
+
+    /**
+     * @brief      Calculates the point. C(t)-function
+     *
+     * @param[in]  t     natural parameter
+     *
+     * @return     The point.
+     */
+    Point dC(float t) const override; 
 private:
     Point m_center;
     float m_radius_x, m_radius_y;

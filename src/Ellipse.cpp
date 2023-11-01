@@ -16,3 +16,10 @@ Point Ellipse::C(float t) const
 	float y = std::get<1>(m_center) + m_radius_y * std::sin(t);
     return Point(x, y, 0);
 }
+
+Point Ellipse::dC(float t) const 	
+{
+	float dx = -  m_radius_x * std::sin(t);
+	float dy =    m_radius_y * std::cos(t);
+    return Point(dx, dy, 0);
+}

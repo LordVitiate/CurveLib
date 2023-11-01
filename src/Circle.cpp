@@ -14,3 +14,9 @@ Point Circle::C(float t) const {
 	float y = std::get<1>(m_center) + m_radius * std::sin(t);
 	return Point(x, y, 0);
 }
+
+Point Circle::dC(float t) const {
+	float dx = -  m_radius * std::sin(t);
+	float dy =    m_radius * std::cos(t);
+	return Point(dx, dy, 0);
+}

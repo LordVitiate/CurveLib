@@ -16,3 +16,10 @@ Point Helix::C(float t) const {
     float z = std::get<2>(m_center) + m_step * t / (2 * M_PI);
     return Point(x, y, z);
 }
+
+Point Helix::dC(float t) const {
+    float dx = -  m_radius * std::sin(t);
+    float dy =    m_radius * std::cos(t);
+    float dz = m_step / (2 * M_PI);
+    return Point(dx, dy, dz);
+}

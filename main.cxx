@@ -10,9 +10,9 @@ void PrintContainer(const Container& container)
 	std::cout << " container's size: " << container.size() << std::endl;
 	for(auto& fig :container) 
 	{
-		std::cout << " \t x: " << std::get<0>(fig->C(M_PI/4.0)) << " dx: " << std::get<0>(fig->dC(M_PI/4.0)) << std::endl;
-		std::cout << " \t y: " << std::get<1>(fig->C(M_PI/4.0)) << " dy: " << std::get<1>(fig->dC(M_PI/4.0)) << std::endl;
-		std::cout << " \t z: " << std::get<2>(fig->C(M_PI/4.0)) << " dz: " << std::get<2>(fig->dC(M_PI/4.0)) << std::endl;
+		std::cout << " \t x: " << fig->C(M_PI/4.0).x() << " dx: " << fig->dC(M_PI/4.0).x() << std::endl;
+		std::cout << " \t y: " << fig->C(M_PI/4.0).y() << " dy: " << fig->dC(M_PI/4.0).y() << std::endl;
+		std::cout << " \t z: " << fig->C(M_PI/4.0).z() << " dz: " << fig->dC(M_PI/4.0).z() << std::endl;
 		std::cout << " \t radius: " << fig->getRadius() << std::endl;
 	}
 	std::cout << " ===== " << std::endl;

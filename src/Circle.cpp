@@ -20,3 +20,6 @@ Point Circle::dC(float t) const {
 	float dy =    m_radius * std::cos(t);
 	return Point(dx, dy, 0);
 }
+
+float Circle::getRadius() const { return m_radius; }
+

@@ -23,3 +23,6 @@ Point Helix::dC(float t) const {
     float dz = m_step / (2 * M_PI);
     return Point(dx, dy, dz);
 }
+
+float Helix::getRadius() const { return m_radius; }
+

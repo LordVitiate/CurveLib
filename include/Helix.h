@@ -39,6 +39,14 @@ public:
      * @return     The point.
      */
     Point dC(float t) const override;
+
+    /**
+     * @brief      Gets the radius.
+     *
+     * @return     The radius.
+     */
+    float getRadius() const override;
+
 private:
     Point m_center;
     float m_radius, m_step;

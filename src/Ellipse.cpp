@@ -23,3 +23,5 @@ Point Ellipse::dC(float t) const
 	float dy =    m_radius_y * std::cos(t);
     return Point(dx, dy, 0);
 }
+
+float Ellipse::getRadius() const { return -1; }

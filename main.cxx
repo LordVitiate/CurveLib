@@ -43,11 +43,11 @@ int main(int argc, char const *argv[])
 	{
 		Container container;
 		container = fabric.CreateRandomContainer();
+		PrintContainer(container);
 
 		Container new_container;
 		std::copy_if(std::begin(container), std::end(container), std::back_inserter(new_container), is_circle);
 		std::sort(std::begin(new_container), std::end(new_container), compareCircles);
-		PrintContainer(new_container);
 
 		float totalSumOfRadii = std::accumulate(new_container.begin(), new_container.end(), 0.0, add);
   		std::cout << "Total Sum of Radii: " << totalSumOfRadii << std::endl;

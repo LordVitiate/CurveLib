@@ -5,9 +5,9 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <algorithm>
 
-
-using Element   = std::unique_ptr<ParametricCurve>;
+using Element   = std::shared_ptr<ParametricCurve>;
 using Container = std::vector<Element>;
 
 class ElementFabric {
@@ -20,7 +20,7 @@ class HelixFabric : public ElementFabric
 protected:
     Element MakeElement() override final
     {
-       return std::make_unique<Helix>(Point(rand() % 10, rand() % 10, rand() % 10), rand() % 5 + 1, 1);
+       return std::make_shared<Helix>(Point(rand() % 10, rand() % 10, rand() % 10), rand() % 5 + 1, 1);
     }
 };
 
@@ -29,7 +29,7 @@ class CircleFabric : public ElementFabric
 protected:
     Element MakeElement() override final
     {
-		return std::make_unique<Circle>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1);
+		return std::make_shared<Circle>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1);
     }
 };
 
@@ -38,7 +38,7 @@ class EllipseFabric : public ElementFabric
 protected:
     Element MakeElement() override final
     {
-		return std::make_unique<Ellipse>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1, rand() % 5 + 1);
+		return std::make_shared<Ellipse>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1, rand() % 5 + 1);
     }
 };
 
@@ -95,17 +95,17 @@ void PrintContainer(const Container& container)
 int main(int argc, char const *argv[])
 {
 	RandomManner fabric;
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 200; i++)
 	{
 		Container container;
 		container = fabric.CreateRandomContainer();
-		PrintContainer(container);
-		for(auto& fig :container) 
+		Container new_container;
+		std::copy_if(std::begin(container), std::end(container), std::back_inserter(new_container), [](const auto& element) 
 		{
-			if (dynamic_cast<Circle*>(fig.get())!=nullptr) std::cout << "Circle" << std::endl;
-			if (dynamic_cast<Ellipse*>(fig.get())!=nullptr) std::cout << "Ellipse" << std::endl;
-			if (dynamic_cast<Helix*>(fig.get())!=nullptr) std::cout << "Helix" << std::endl;
-		}
+    		return (dynamic_cast<Circle*>(element.get()) != nullptr);
+		});
+		PrintContainer(new_container);
+
 	}
 	return 0;
 }

@@ -7,12 +7,12 @@ Element HelixFabric::MakeElement()
 
 Element CircleFabric::MakeElement() 
 {
-	return std::make_shared<Circle>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1);
+	return std::make_shared<Circle>(Point(rand() % 10, rand() % 10), rand() % 5 + 1);
 }
 
 Element EllipseFabric::MakeElement() 
 {
-	return std::make_shared<Ellipse>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1, rand() % 5 + 1);
+	return std::make_shared<Ellipse>(Point(rand() % 10, rand() % 10), rand() % 5 + 1, rand() % 5 + 1);
 }
 
 void RandomManner::FillContainerByElement(ElementFabric& fabric, Container& container)

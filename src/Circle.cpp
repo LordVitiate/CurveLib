@@ -10,15 +10,15 @@ Circle::Circle(Point center, float radius) :
 }
 
 Point Circle::C(float t) const {
-	float x = std::get<0>(m_center)  + m_radius * std::cos(t);
-	float y = std::get<1>(m_center) + m_radius * std::sin(t);
-	return Point(x, y, 0);
+	float x = m_center.x()  + m_radius * std::cos(t);
+	float y = m_center.y() + m_radius * std::sin(t);
+	return Point(x, y);
 }
 
 Point Circle::dC(float t) const {
 	float dx = -  m_radius * std::sin(t);
 	float dy =    m_radius * std::cos(t);
-	return Point(dx, dy, 0);
+	return Point(dx, dy);
 }
 
 float Circle::getRadius() const { return m_radius; }

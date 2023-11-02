@@ -1,6 +1,7 @@
 #pragma once
 
-using Point = std::tuple<float, float, float>;
+#include "Point.h"
+// using Point = std::tuple<float, float, float>;
 
 /**
  * @brief      Pure abstract interface

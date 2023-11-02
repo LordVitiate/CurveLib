@@ -11,9 +11,9 @@ Helix::Helix(Point center, float radius, float step) :
 }
 
 Point Helix::C(float t) const {
-	float x = std::get<0>(m_center) + m_radius * std::cos(t);
-    float y = std::get<1>(m_center) + m_radius * std::sin(t);
-    float z = std::get<2>(m_center) + m_step * t / (2 * M_PI);
+	float x = m_center.x() + m_radius * std::cos(t);
+    float y = m_center.y() + m_radius * std::sin(t);
+    float z = m_center.z() + m_step * t / (2 * M_PI);
     return Point(x, y, z);
 }
 

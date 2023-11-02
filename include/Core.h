@@ -85,7 +85,7 @@ private:
 	 * @param      fabric     The concrete fabric
 	 * @param      container  The container
 	 */
-	void FillContainer(ElementFabric& fabric, Container& container);
+	void FillContainerByElement(ElementFabric& fabric, Container& container);
 public:
 	/**
 	 * @brief      Creates a random container.

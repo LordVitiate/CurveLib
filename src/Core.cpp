@@ -15,9 +15,9 @@ Element EllipseFabric::MakeElement()
 	return std::make_shared<Ellipse>(Point(rand() % 10, rand() % 10, 0), rand() % 5 + 1, rand() % 5 + 1);
 }
 
-void RandomManner::FillContainer(ElementFabric& fabric, Container& container)
+void RandomManner::FillContainerByElement(ElementFabric& fabric, Container& container)
 {
-	for (int i = 0; i < 2; i++) container.emplace_back(fabric.MakeElement());
+	container.emplace_back(fabric.MakeElement());
 }
 
 Container RandomManner::CreateRandomContainer()
@@ -29,17 +29,17 @@ Container RandomManner::CreateRandomContainer()
         if(RandomVal == 0)
         {
 			HelixFabric fabric;
-			FillContainer(fabric,container);
+			FillContainerByElement(fabric,container);
         }
         if(RandomVal == 1)
         {
 			CircleFabric fabric; 
-			FillContainer(fabric,container);
+			FillContainerByElement(fabric,container);
         }
         if(RandomVal == 2)
         {
 			EllipseFabric fabric; 
-			FillContainer(fabric,container);
+			FillContainerByElement(fabric,container);
         }
 	}
 	return container; 

@@ -17,10 +17,10 @@ protected:
     float m_x;
     float m_y;
 public:
-    PlanarPoint(float x, float y): m_x(x), m_y(y) {}
-    float x() const override {return m_x;}
-    float y() const override {return m_y;}
-    float z() const override {return 0.0;}
+    PlanarPoint(float x, float y);
+    float x() const override;
+    float y() const override;
+    float z() const override;
 
 };
 
@@ -29,19 +29,19 @@ class SpacePoint : public PlanarPoint {
 protected:
     float m_z;
 public:
-    SpacePoint(float x, float y, float z) : PlanarPoint(x, y), m_z(z) {}
-    float z() const override {return m_z;}
+    SpacePoint(float x, float y, float z);
+    float z() const override;
 
 };
 
 
 struct Point
 {
-	Point(float x, float y) : point(std::make_shared<PlanarPoint>(x,y)) {}
-	Point (float x, float y, float z) : point(std::make_shared<SpacePoint>(x,y,z)) {}
-	float x() const {return point->x();}
-    float y() const {return point->y();}
-    float z() const {return point->z();}
+	Point(float x, float y);
+	Point (float x, float y, float z);
+	float x() const;
+    float y() const;
+    float z() const;
 private:
 	std::shared_ptr<SpatialPoint> point;
 };

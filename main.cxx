@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 #include <algorithm>
+#include <numeric>
 
 using Element   = std::shared_ptr<ParametricCurve>;
 using Container = std::vector<Element>;
@@ -106,6 +107,11 @@ int main(int argc, char const *argv[])
     	return radius1 < radius2;
 	};
 
+	auto add = [](float accum, const Element& curve) 
+	{ 
+		return accum + curve->getRadius(); 
+	};
+
 	RandomManner fabric;
 	for (int i = 0; i < 200; i++)
 	{
@@ -118,6 +124,9 @@ int main(int argc, char const *argv[])
 		std::sort(std::begin(new_container), std::end(new_container), compareCircles);
     
 		PrintContainer(new_container);
+
+		float totalSumOfRadii = std::accumulate(new_container.begin(), new_container.end(), 0.0, add);
+  		std::cout << "Total Sum of Radii: " << totalSumOfRadii << std::endl;
 
 	}
 	return 0;
